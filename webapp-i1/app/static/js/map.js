@@ -59,6 +59,7 @@ function myFunction(arr)
 
 }
 
+
 // Backend requesting and tile drawing starts here ...
 const backend_url_base = 'http://165.232.120.34:8000'
 

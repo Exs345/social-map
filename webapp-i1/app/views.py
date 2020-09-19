@@ -18,6 +18,10 @@ def index():
 def map():
     return render_template('public/map2.html')
 
+@app.route('/draw')
+def draw():
+    return render_template('public/full.html')
+
 @app.route('/login', methods=["GET", "POST"])
 def sign_up():
 
