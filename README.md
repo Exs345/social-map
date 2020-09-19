@@ -27,4 +27,4 @@ More on the idea [Swisscom Mobility Insights](https://www.swisscom.ch/en/busines
 <img src="./drawings/social-map-logo-black.png"><br />
 <img src="./drawings/social-map-logo-white.png"><br />
 <img src="./drawings/social-map-logo-only-final.png"><br />
-<img src="./drawings/figma-iteration1.png"><br />
+<img src="./drawings/figma-iteration1.PNG"><br />
