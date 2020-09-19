@@ -1,7 +1,8 @@
-body {
-    background-color: #f1f1f1;
-}
-
 p.ex1 {
     border: 1px solid red;
 }
+html, body { background-color: #f1f1f1; width:100%;padding:0;margin:0; }
+.container { width:95%;max-width:980px;padding:1% 2%;margin:0 auto }
+#lat, #lon { text-align:right }
+.address { cursor:pointer }
+.address:hover { color:#AA0000;text-decoration:underline }

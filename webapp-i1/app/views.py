@@ -16,7 +16,7 @@ def index():
 
 @app.route('/map')
 def map():
-    return render_template('public/map.html')
+    return render_template('public/map2.html')
 
 @app.route('/login', methods=["GET", "POST"])
 def sign_up():

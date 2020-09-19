@@ -1,1 +1,1 @@
-console.log("Hello from app.js!- made by Amartya & Sreshtha");
+console.log("Hello from app.js!- made for HackZurich");
