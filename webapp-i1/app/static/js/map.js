@@ -1,6 +1,6 @@
 // Zurich
-var startlat = 47.37;
-var startlon = 8.54;
+var startlat = 47.38625170;
+var startlon = 8.52872890;
 
 var options = {
  center: [startlat, startlon],
