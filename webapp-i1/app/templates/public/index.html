@@ -1,0 +1,32 @@
+{% extends 'public/templates/public_template.html' %}
+
+{% block title %}
+Social Map | HackZurich
+{% endblock %}
+
+{% block main %}
+<div class='container'>
+    <div class="row"> 
+        <div class="col">
+            <center>
+            <br />
+            <img src="{{url_for('static', filename='img/social-map-logo-final.png')}}" align="middle" height=200px/><br />
+            <h2>Zurich, Switzerland <img src="{{url_for('static', filename='img/swiss.png')}}" align="middle" height=40px/><br /></h2>
+            <h6>SocialMap helps you empower your business in Zurich with strategic planning backed by data analysis and Artificial Intelligence.</h6><br />
+            </center>
+            <p class="ex1" align="center" style="padding: 15px 15px 15px 15px">            
+                Easy-to-use visualization tool!
+            </p>
+            <img src="{{url_for('static', filename='img/MacBook-Pro-mockup.png')}}" align="middle" height=250px/>
+            <button type="submit" class="btn btn-primary">Sign Up</button><a> </a><button type="submit" class="btn btn-primary">Learn More</button>
+            <p align="right">
+                <a href="#">FAQ</a>
+                <a href="#">Privacy</a>            
+                <a href="#"><img src="{{url_for('static', filename='img/twitter.png')}}" align="middle" height=20px/></a> 
+                <a href="#"><img src="{{url_for('static', filename='img/fb.webp')}}" align="middle" height=20px/></a> 
+                <a href="#"><img src="{{url_for('static', filename='img/linkedin.webp')}}" align="middle" height=20px/></a> 
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
