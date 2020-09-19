@@ -59,6 +59,28 @@ function myFunction(arr)
 
 }
 
+// Backend requesting and tile drawing starts here ...
+const backend_url_base = 'http://165.232.120.34:8000'
+
+function draw_tile(tile) {
+ console.log(tile.lower_left.x, tile.anxiety)
+}
+
+function onMapClick(e) {
+ const lat = e.latlng.lat;
+ const lon = e.latlng.lng;
+
+ fetch(`${backend_url_base}/point/${lat}/${lon}/predict`)
+  .then(response => response.json().then(tiles => {
+   for (let tile of tiles)
+    draw_tile(tile)
+  }))
+
+}
+
+map.on('click', onMapClick)
+// ... and ends here
+
 function addr_search()
 {
  var inp = document.getElementById("addr");
