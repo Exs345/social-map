@@ -1,0 +1,11 @@
+version: "3.5"
+
+services:
+  server:
+    image: "social_map/backend:0.1.0"
+    build: .
+    ports:
+    - 8000:8000
+    command: ['python', 'run_server.py']
+#    environment:
+#      DB_URL_NOTIFIER: postgres://login:password@host:port/db
