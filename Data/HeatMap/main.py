@@ -144,7 +144,7 @@ def get_time_frame():
     years1 = 2019
     years2 = 2021
     hours1 = 0
-    hours2 = 23
+    hours2 = 24
     res = []
     for i in range(years1, years2):
         if i==2020:
