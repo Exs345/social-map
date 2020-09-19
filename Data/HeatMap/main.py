@@ -92,11 +92,13 @@ for i,data in enumerate(daten):
 # was ist in der nähe eines punktes
 lat4=point[0]
 lon4=point[1]
-ids_New=[]
-for i,mid in enumerate(middlepoint):
-       dif=haversine(lon4, lat4, mid[1], mid[0])
-       if dif<0.15:
-              ids_New.append(int(mid[2]))
+ids_New= []
+ids_New.append(int(point[2]))
+
+#for i,mid in enumerate(middlepoint):
+#       dif=haversine(lon4, lat4, mid[1], mid[0])
+#       if dif<0.15:
+#              ids_New.append(int(mid[2]))
 
 
 #create_locations_dataframe(munic=261)
@@ -138,7 +140,7 @@ print(format_ids(res)) # Output for list
 
 def get_time_frame():
     days1 = 25
-    days2 = 30
+    days2 = 31
     years1 = 2019
     years2 = 2021
     hours1 = 0
@@ -147,7 +149,7 @@ def get_time_frame():
     for i in range(years1, years2):
         if i==2020:
             days1=23
-            days2 = 29
+            days2 = 30
         for k in range(days1, days2):
             for l in range(hours1, hours2):
                t = str(time(l, 0, 0))
@@ -189,17 +191,35 @@ def get_density_data(date, formatted_ids):
             key_val['time'] = date
         data.append(output)
 
-    print("Done with one hour")
+    print(i)
     return(data)
 
 
 df = []
 for i in range(len(time_frame)):
     df.extend(get_density_data(time_frame[i], format_ids(res)))
+#print(len(df))
+dt=np.zeros((len(df),3))
+outPut=[]
+#Head
+line= "tileId,score,time"
+outPut.append(line)
+for i,d in enumerate(df):
+    print(d)
+    d=d[0]
+    temp = str(d['tileId'])+","
+    temp += str(d['score'])+","
+    temp += str(d["time"])
 
-new_dat = pd.DataFrame.from_records(df)
+    outPut.append(temp)
 
-new_dat.to_csv("target.csv", sep=",", index=False, header=True)
+#Export to txt File
+MyFile=open('target.txt','w')
+for element in outPut:
+     MyFile.write(element)
+     MyFile.write('\n')
+MyFile.close()
+
 
 
 
