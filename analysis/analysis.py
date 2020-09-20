@@ -1,5 +1,3 @@
-import sys
-import os
 import numpy as np
 import pandas as pd
 import datetime
@@ -7,11 +5,10 @@ from xgboost.sklearn import XGBRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 
-
 def print_full(x):
-    pd.set_option('display.max_rows', len(x))
+    pd.set_option('display.max_columns', len(x))
     print(x)
-    pd.reset_option('display.max_rows')
+    pd.reset_option('display.max_columns')
 
 
 
@@ -21,14 +18,9 @@ y = y.sort_values(by="time", ascending=True).iloc[144:,1].reset_index(drop=True)
 
 #--------------------------------------------------------------------------------
 # Weather
-import os
-script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-rel_path = "Data/weather/wetter_2020_ZH.txt"
-abs_file_path = os.path.join(script_dir, rel_path)
-weather_2020 = pd.read_csv(abs_file_path)
-rel_path = "Data/weather/wetter_2019_ZH.txt"
-abs_file_path = os.path.join(script_dir, rel_path)
-weather_2019 = pd.read_csv(abs_file_path)
+
+weather_2020 = pd.read_csv("wetter_2020_ZH.txt")
+weather_2019 = pd.read_csv("wetter_2019_ZH.txt")
 
 
 
@@ -73,10 +65,8 @@ weather_features_final = pd.concat(feature_matrices, axis=0).reset_index(drop=Tr
 
 #--------------------------------------------------------------------------------
 # Covid Cases
-script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-rel_path = "Data/covid_19_data_switzerland_filtered.csv"
-abs_file_path = os.path.join(script_dir, rel_path)
-cases = pd.read_csv(abs_file_path, sep=";")
+
+cases = pd.read_csv("covid_19_data_switzerland_filtered.csv", sep=";")
 
 # Only get Zurich data in relevant data range
 start = list(cases["Date"]).index("2020-03-20")
@@ -90,11 +80,8 @@ cases_final = np.repeat(cases_adj, 24).reset_index(drop=True)
 
 #--------------------------------------------------------------------------------
 # Covid Deaths
-script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-rel_path = "Data/covid_19_data_switzerland_filtered_dead.csv"
-abs_file_path = os.path.join(script_dir, rel_path)
 
-deaths = pd.read_csv(abs_file_path, sep=";")
+deaths = pd.read_csv("covid_19_data_switzerland_filtered_dead.csv", sep=";")
 
 # Only get Zurich data in relevant data range
 start = list(deaths["Date"]).index("2020-03-20")
@@ -108,11 +95,8 @@ deaths_final = np.repeat(deaths_adj, 24).reset_index(drop=True)
 
 #--------------------------------------------------------------------------------
 # Newspaper Titles (3 days before)
-script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-rel_path = "Data/NewsSRF/outputData_2.csv"
-abs_file_path = os.path.join(script_dir, rel_path)
 
-newspaper = pd.read_csv(abs_file_path, index_col=False)
+newspaper = pd.read_csv("outputData_2.csv", index_col=False)
 newspaper_sorted = newspaper.sort_values(by=['Day'], ascending=True).reset_index(drop=True).iloc[4:11,1:4]
 all = np.repeat(newspaper_sorted["All"] , 24)
 perc_rel = np.repeat(newspaper_sorted["AllRelevant"]/newspaper_sorted["All"] , 24)
@@ -123,11 +107,8 @@ newspaper_final = pd.concat([all, perc_rel, perc_zur], axis=1).rename(columns={"
 
 #--------------------------------------------------------------------------------
 # Mobility
-script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
-rel_path = "Data/mobility_ZH_2020.csv"
-abs_file_path = os.path.join(script_dir, rel_path)
 
-mobility = pd.read_csv(abs_file_path, sep=";")
+mobility = pd.read_csv("mobility_ZH_2020.csv", sep=";")
 
 mobility.loc[145.5,:] = "2020-03-29T02:00:00", 2897, 554, 982
 mobility_final = mobility.sort_index().reset_index(drop=True).iloc[:,1:4].rename(columns={"Total": "trips", "Incoming": "incoming", "Innside": "inside"})
@@ -137,6 +118,7 @@ mobility_final = mobility.sort_index().reset_index(drop=True).iloc[:,1:4].rename
 # Final feature matrix
 
 X = pd.concat([weather_features_final, newspaper_final, mobility_final], axis=1).dropna()
+print_full(X)
 
 #---------------------------------------------------------------------------------
 # Regression
@@ -145,16 +127,22 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random
 model = XGBRegressor(objective="reg:squarederror")
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
-print(y_pred)
-print(y_test)
-
-
-
+y_pred = pd.Series(y_pred).reset_index(drop=True)
+y_test = pd.Series(y_test).reset_index(drop=True)
+print(pd.concat([y_pred, y_test], axis=1))
 
 print(cross_val_score(model, X, y, cv=5))
-#
-# model.fit(X, y)
-#
-# # Supply values here
-# X_test =
-# y_test = model.predict(X_test)
+
+model.fit(X, y)
+
+# Supply values here
+#X_test = [temp-2, prec-2, temp-1, prec-1, temp_today, prec_today, articles_-2, relevant perc_-2, perc zurich_-2, #trips(today), incoming(today), inside (today)]
+
+data = {'temp_3': [19], 'prec_3': [2], 'temp_2': [20], 'prec_2': [0], 'temp_1': [17], 'prec_1': [3], 'articl': [2144], 'perc_rel': [0.310168],
+	'perc_zur': [0.018190], 'trips': [5739], 'incoming': [1437], 'inside': [1944]}
+
+X_test = pd.DataFrame(data)
+#print(X_test)
+
+y_test = model.predict(X_test)
+print(y_test)
