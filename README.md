@@ -30,6 +30,8 @@ More on the idea [Swisscom Mobility Insights](https://www.swisscom.ch/en/busines
 
 <img src="./img/case1.jpg" width=40%><a> </a><img src="./img/case2.jpg" width=40%>
 
+<p align="justify">Easy-to-use visualization tool! Pick a coordinate and get the risk score of that coordinate based on real data analysis. We incorporate Machine Learning to process mobility data from swisscom, scraped data of corona tweets and news, weather data etc resulting into a 16 dimensional vector. Learn with us how human behaviour changed in this pandemic era and make strategic decisions for your business. Don't Guess, Decide!</p>
+
 <br />
 <center>
 <img src="./drawings/social-map-logo-final.png" height=100px>
