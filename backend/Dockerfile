@@ -1,5 +1,5 @@
 FROM python:3.7-slim
-#RUN apt-get update && apt-get install -y gcc build-essential curl cron
+RUN apt-get update && apt-get install -y gcc build-essential curl cron
 
 # All the services that use this image should expect common to be in /usr/app/common
 WORKDIR /usr/app
