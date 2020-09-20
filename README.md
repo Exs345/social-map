@@ -1,4 +1,4 @@
-# Team Social Map  /Designs/
+# Team Social Map  | HackZurich 2020
 
 <img src="./img/hz_banner.png">
 
@@ -21,7 +21,7 @@ More on the idea [Swisscom Mobility Insights](https://www.swisscom.ch/en/busines
 
 <hr>
 
-## FOR THE HACK [Final LIVE](https://hackzurich20.herokuapp.com/)
+## FOR THE HACK [Final LIVE project](https://hackzurich20.herokuapp.com/)
 
 > ### Webapplication: Flask, HTML, CSS, JavaScript, Bootstrap
 > ### Backend, Machine Learning And Data Analysis: Python, C#
