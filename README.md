@@ -23,8 +23,10 @@ More on the idea [Swisscom Mobility Insights](https://www.swisscom.ch/en/busines
 
 ## FOR THE HACK
 
-<img src="./drawings/social-map-logo-final.png"><br />
-<img src="./drawings/social-map-logo-black.png"><br />
-<img src="./drawings/social-map-logo-white.png"><br />
-<img src="./drawings/social-map-logo-only-final.png"><br />
-<img src="./drawings/figma-iteration1.PNG"><br />
+<img src="./drawings/social-map-logo-final.png" height=80px>
+<img src="./drawings/social-map-logo-black.png" height=80px>
+<img src="./drawings/social-map-logo-white.png" height=80px>
+<img src="./drawings/social-map-logo-only-final.png" height=80px><br />
+<img src="./drawings/figma_design_1.PNG"><br />
+
+[LIVE Figma Prototype](https://www.figma.com/proto/aILDLpl4Zsf7psDWIMpold/HZ?node-id=7%3A6&scaling=scale-down) Check it out here!
