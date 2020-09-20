@@ -15,4 +15,10 @@ class Point(BaseModel):
 class TilePrediction(BaseModel):
     lower_left: Point
     upper_right: Point
-    anxiety: confloat(ge=0.0, le=10.0)
+    score: confloat(ge=30, le=100)
+
+    @classmethod
+    def construct_adjusted(cls, lower_left: Point, upper_right: Point, score: float) \
+            -> 'TilePrediction':
+        score = min(max(score, 30), 100)
+        return cls(lower_left=lower_left, upper_right=upper_right, score=score)
