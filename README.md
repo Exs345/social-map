@@ -29,6 +29,7 @@ More on the idea [Swisscom Mobility Insights](https://www.swisscom.ch/en/busines
 
 <center>
 <img src="./img/case1.jpg" width=40%><a> </a><img src="./img/case2.jpg" width=40%>
+</center>
 
 <br />
 <center>
