@@ -20,8 +20,8 @@ y = y.sort_values(by="time", ascending=True).iloc[144:,1].reset_index(drop=True)
 #--------------------------------------------------------------------------------
 # Weather
 
-weather_2020 = pd.read_csv("wetter_2020_ZH.txt")
-weather_2019 = pd.read_csv("wetter_2019_ZH.txt")
+weather_2020 = pd.read_csv("../Data/weather/wetter_2020_ZH.txt")
+weather_2019 = pd.read_csv("../Data/weather/wetter_2019_ZH.txt")
 
 
 
@@ -67,7 +67,7 @@ weather_features_final = pd.concat(feature_matrices, axis=0).reset_index(drop=Tr
 #--------------------------------------------------------------------------------
 # Covid Cases
 
-cases = pd.read_csv("covid_19_data_switzerland_filtered.csv", sep=";")
+cases = pd.read_csv("../Data/covid_19_data_switzerland_filtered.csv", sep=";")
 
 # Only get Zurich data in relevant data range
 start = list(cases["Date"]).index("2020-03-20")
@@ -82,7 +82,7 @@ cases_final = np.repeat(cases_adj, 24).reset_index(drop=True)
 #--------------------------------------------------------------------------------
 # Covid Deaths
 
-deaths = pd.read_csv("covid_19_data_switzerland_filtered_dead.csv", sep=";")
+deaths = pd.read_csv("../Data/covid_19_data_switzerland_filtered_dead.csv", sep=";")
 
 # Only get Zurich data in relevant data range
 start = list(deaths["Date"]).index("2020-03-20")
@@ -97,7 +97,7 @@ deaths_final = np.repeat(deaths_adj, 24).reset_index(drop=True)
 #--------------------------------------------------------------------------------
 # Newspaper Titles (3 days before)
 
-newspaper = pd.read_csv("outputData_2.csv", index_col=False)
+newspaper = pd.read_csv("../Data/NewsSRF/outputData_2.csv", index_col=False)
 newspaper_sorted = newspaper.sort_values(by=['Day'], ascending=True).reset_index(drop=True).iloc[4:11,1:4]
 all = np.repeat(newspaper_sorted["All"] , 24)
 perc_rel = np.repeat(newspaper_sorted["AllRelevant"]/newspaper_sorted["All"] , 24)
@@ -109,7 +109,7 @@ newspaper_final = pd.concat([all, perc_rel, perc_zur], axis=1).rename(columns={"
 #--------------------------------------------------------------------------------
 # Mobility
 
-mobility = pd.read_csv("mobility_ZH_2020.csv", sep=";")
+mobility = pd.read_csv("../Data/mobility_ZH_2020.csv", sep=";")
 
 mobility.loc[145.5,:] = "2020-03-29T02:00:00", 2897, 554, 982
 mobility_final = mobility.sort_index().reset_index(drop=True).iloc[:,1:4].rename(columns={"Total": "trips", "Incoming": "incoming", "Innside": "inside"})
