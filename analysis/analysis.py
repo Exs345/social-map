@@ -4,6 +4,7 @@ import datetime
 from xgboost.sklearn import XGBRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
+import pickle
 
 def print_full(x):
     pd.set_option('display.max_rows', len(x))
@@ -124,7 +125,9 @@ print_full(X)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 model = XGBRegressor(objective="reg:squarederror")
 model.fit(X_train, y_train)
-model.save_model('xgboost')
+
+with open('../backend/app/model.pkl', 'wb') as file:
+    pickle.dump(model, file)
 
 y_pred = model.predict(X_test)
 y_pred = pd.Series(y_pred).reset_index(drop=True)
@@ -144,8 +147,10 @@ data = {'temp_3': [19], 'prec_3': [2], 'temp_2': [20], 'prec_2': [0], 'temp_1': 
 X_test = pd.DataFrame(data)
 #print(X_test)
 
-y_test = model.predict(X_test)
-print(y_test[0])
+
+if __name__ == '__main__':
+    y_test = model.predict(X_test)
+    print(y_test[0])
 
 
 # Visualization purposes
