@@ -1,0 +1,37 @@
+{% extends 'public/templates/public_template.html' %}
+
+{% block title %}
+Social Map | HackZurich
+{% endblock %}
+
+{% block main %}
+<div class='container'>
+    <div class="row"> 
+        <div class="col">
+            <center>
+            <br />
+            <img src="{{url_for('static', filename='img/social-map-logo-final.png')}}" align="middle" height=200px/><br />
+            
+            <link rel='stylesheet' href='{{ url_for('static', filename='css/signup.css') }}'>
+            <script src='{{ url_for('static', filename='js/signup.js') }}'></script>  
+
+            <h2>Zurich, Switzerland <img src="{{url_for('static', filename='img/swiss.png')}}" align="middle" height=40px/><br /></h2>
+            <h6>SocialMap helps you empower your business in Zurich with strategic planning backed by Data Analysis and Artificial Intelligence.</h6><br />
+            </center>
+            <p class="ex1" align="center" style="padding: 15px 15px 15px 15px">            
+                Easy-to-use visualization tool! Pick a coordinate and get the risk score of that coordinate based on real data analysis. We incorporate Machine Learning to process mobility data from swisscom, scraped data of corona tweets and news, weather data resulting into a 16 dimensional vector. Learn with us how human behaviour changed in this pandemic era and make strategic decisions for your business. Don't Guess, Decide!
+            </p>
+            <img src="{{url_for('static', filename='img/MacBook-Pro-mockup.png')}}" align="middle" height=250px/>
+            <a href="/login"><button type="submit" class="btn btn-primary">Sign Up</button><a> </a><a href="/newsletter"><button type="submit" class="btn btn-primary">Learn More</button></a>
+            
+            <p align="right">
+                <a href="#">FAQ</a>
+                <a href="#">Privacy</a>            
+                <a href="http://twitter.com/" target="_blank"><img src="{{url_for('static', filename='img/twitter.png')}}" align="middle" height=20px/></a> 
+                <a href="https://www.facebook.com/" target="_blank"><img src="{{url_for('static', filename='img/fb.webp')}}" align="middle" height=20px/></a> 
+                <a href="https://www.linkedin.com/" target="_blank"><img src="{{url_for('static', filename='img/linkedin.webp')}}" align="middle" height=20px/></a> 
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

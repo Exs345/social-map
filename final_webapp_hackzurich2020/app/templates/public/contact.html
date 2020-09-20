@@ -1,0 +1,42 @@
+{% extends 'public/templates/public_template.html' %}
+
+{% block title %}
+Social Map | HackZurich
+{% endblock %}
+
+{% block main %}
+<div class='container'>
+    <div class="row"> 
+        <div class="col">
+            <center>
+            <br />
+            <img src="{{url_for('static', filename='img/social-map-logo-final.png')}}" align="middle" height=200px/><br />
+            <h2>Team <br /></h2><br/>
+            <img src="{{url_for('static', filename='img/user/florian.jpg')}}" align="middle" height=150px/>
+            
+            <img src="{{url_for('static', filename='img/user/jann.jpg')}}" align="middle" height=150px/>
+            
+            <img src="{{url_for('static', filename='img/user/vania.jpg')}}" align="middle" height=150px/>
+            
+            <img src="{{url_for('static', filename='img/user/anton.jpg')}}" align="middle" height=150px/>
+            
+            <img src="{{url_for('static', filename='img/user/amartya.jpg')}}" align="middle" height=150px/><br /><br />
+            <h5>Florian Schottmann, Jann Demond, Vania Chebotar, Anton Hasenkampf, Amartya Saikia</h5>
+
+            <img src="{{url_for('static', filename='img/ethz.png')}}" align="middle" height=20px/><a> </a><a> </a>
+            <img src="{{url_for('static', filename='img/ul.png')}}" align="middle" height=20px/><a> </a><a> </a>
+            <img src="{{url_for('static', filename='img/mipt.png')}}" align="middle" height=30px/><a> </a><a> </a>
+            <img src="{{url_for('static', filename='img/hu.png')}}" align="middle" height=40px/><a> </a><a> </a>
+            <img src="{{url_for('static', filename='img/aec.png')}}" align="middle" height=40px/>
+
+        </center>
+    
+        </div>
+    </div>
+</div>
+
+<center><img src="{{url_for('static', filename='img/hackz_banner.png')}}" align="center" width=400px/></br>
+    Problem statement by <a href="https://www.swisscom.ch/en/business/enterprise/offer/enterprise-mobile/mobility-insights.html" target="_blank"><img src="{{url_for('static', filename='img/swisscom.png')}}" align="center" width=100px/></a> | <a href="https://github.com/s-ai-kia/social-map" target="_blank"><img src="{{url_for('static', filename='img/github.png')}}" align="center" width=20px/></a>
+
+</center>
+{% endblock %}
