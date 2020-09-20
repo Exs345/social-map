@@ -6,15 +6,13 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 
 def print_full(x):
-    pd.set_option('display.max_columns', len(x))
+    pd.set_option('display.max_rows', len(x))
     print(x)
-    pd.reset_option('display.max_columns')
-
-
+    pd.reset_option('display.max_rows')
 
 y = pd.read_csv("target.txt")
 y = y.sort_values(by="time", ascending=True).iloc[144:,1].reset_index(drop=True)
-
+print_full(y)
 
 #--------------------------------------------------------------------------------
 # Weather
@@ -126,6 +124,8 @@ print_full(X)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 model = XGBRegressor(objective="reg:squarederror")
 model.fit(X_train, y_train)
+model.save_model('xgboost')
+
 y_pred = model.predict(X_test)
 y_pred = pd.Series(y_pred).reset_index(drop=True)
 y_test = pd.Series(y_test).reset_index(drop=True)
@@ -145,4 +145,16 @@ X_test = pd.DataFrame(data)
 #print(X_test)
 
 y_test = model.predict(X_test)
-print(y_test)
+print(y_test[0])
+
+
+# Visualization purposes
+# model_vis = XGBRegressor(objective="reg:squarederror")
+# X_train_vis = X.drop([14, 38, 62, 86, 110, 134, 158])
+# X_test_vis = X.iloc[[14, 38, 62, 86, 110, 134, 158],:]
+# y_train_vis = y.drop([14, 38, 62, 86, 110, 134, 158])
+#
+# model_vis.fit(X_train_vis, y_train_vis)
+#
+# y_pred_vis = model_vis.predict(X_test_vis)
+# print(y_pred_vis)
