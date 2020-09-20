@@ -27,9 +27,8 @@ More on the idea [Swisscom Mobility Insights](https://www.swisscom.ch/en/busines
 > ### Backend, Machine Learning And Data Analysis: Python, C#
 > ### Designs: Figma, Adobe Illustrator and Photoshop
 
-<center>
+
 <img src="./img/case1.jpg" width=40%><a> </a><img src="./img/case2.jpg" width=40%>
-</center>
 
 <br />
 <center>
