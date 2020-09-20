@@ -36,10 +36,10 @@ def sign_up():
         req = request.form
         username = req["username"]
         email = req.get("email")
-        message = request.form["message"]
+        password = request.form["password"]
 
-        print(username, email, message)
-        return redirect('/login')
+        print(username, email, password)
+        return render_template('public/thankyou.html')
 
     return render_template('public/login.html')
 
