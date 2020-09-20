@@ -16,6 +16,14 @@ def index():
 def map():
     return render_template('public/map2.html')
 
+@app.route('/newsletter')
+def news():
+    return render_template('public/newsletter.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('public/contact.html')
+
 
 @app.route('/draw')
 def draw():

@@ -1,0 +1,30 @@
+{% extends 'public/templates/public_template.html' %}
+
+{% block title %}
+Social Map | HackZurich
+{% endblock %}
+
+{% block main %}
+<div class='container'>
+    <div class="row"> 
+        <div class="col">
+            <center>
+            <br />
+            <img src="{{url_for('static', filename='img/social-map-logo-final.png')}}" align="middle" height=200px/><br />
+            <h2>Team <br /></h2><br/>
+            <img src="{{url_for('static', filename='img/user/florian.jpg')}}" align="middle" height=150px/>
+            
+            <img src="{{url_for('static', filename='img/user/jann.jpg')}}" align="middle" height=150px/>
+            
+            <img src="{{url_for('static', filename='img/user/vania.jpg')}}" align="middle" height=150px/>
+            
+            <img src="{{url_for('static', filename='img/user/anton.png')}}" align="middle" height=150px/>
+            
+            <img src="{{url_for('static', filename='img/user/amartya.jpg')}}" align="middle" height=150px/><br /><br />
+            <h5>Florian Schottmann, Jann Demond, Vania Chebotar, Anton Hasenkampf, Amartya Saikia</h5>
+        </center>
+    
+        </div>
+    </div>
+</div>
+{% endblock %}
